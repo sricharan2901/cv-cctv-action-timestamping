@@ -134,8 +134,8 @@ export default function Home() {
               className="relative group cursor-pointer"
               onClick={() => fileInputRef.current?.click()}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative border-2 border-dashed border-border/40 border-white/20 rounded-2xl p-12 hover:border-accent/50 transition-all duration-300 bg-transparent">
+              <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <div className="relative border-2 border-dashed border-border/40 border-white/20 rounded-2xl p-12 transition-all duration-300 bg-transparent">
                 {videoPreview ? (
                   <div className="space-y-4">
                     <div className="relative rounded-xl overflow-hidden bg-black/60">
@@ -148,7 +148,7 @@ export default function Home() {
                   <div className="text-center space-y-4">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center mx-auto">
                       <svg className="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
+                        <pathcv-cctv-action-timestamping
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth={1.5}
@@ -192,7 +192,7 @@ export default function Home() {
 
             <div className="space-y-4">
               <div className="relative group">
-                <div className="absolute inset-0 bg-white/20 rounded-xl blur-lg opacity-0 group-focus-within:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-white/20 rounded-xl blur-lg opacity-0 duration-300"></div>
                 <input
                   type="text"
                   placeholder="Search for actions: running, falling, fighting..."
@@ -206,7 +206,7 @@ export default function Home() {
               <button
                 onClick={handleSearch}
                 disabled={!searchQuery.trim() || searchLoading}
-                className="w-full px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-white/20 hover:shadow-lg hover:shadow-primary/30 text-white"
+                className="w-full px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 disabled:opacity-10 disabled:cursor-not-allowed bg-white/20 text-white"
               >
                 {searchLoading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -294,43 +294,6 @@ export default function Home() {
                   )}
                 </div>
               </div>
-            </div>
-          </div>
-        )}
-
-        {searchResults && !searchResults.error && (
-          <div className="space-y-12">
-            <div className="border-t border-border/20 pt-12">
-              <h2 className="text-4xl font-bold mb-8">Search Results</h2>
-
-              {searchResults.matches && searchResults.matches.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {searchResults.matches.map((match, idx) => (
-                    <div
-                      key={idx}
-                      className="group p-6 rounded-xl border border-border/30 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 bg-card/30"
-                    >
-                      <div className="flex items-start justify-between mb-4">
-                        <h4 className="text-xl font-semibold">{match.action}</h4>
-                        <span className="px-3 py-1 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 text-primary text-sm font-bold">
-                          {(match.similarity * 100).toFixed(0)}%
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground mb-4">{match.description}</p>
-                      <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-500"
-                          style={{ width: `${match.similarity * 100}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="p-12 text-center rounded-xl border border-border/20 bg-card/30">
-                  <p className="text-muted-foreground">No matching actions found for "{searchQuery}"</p>
-                </div>
-              )}
             </div>
           </div>
         )}
