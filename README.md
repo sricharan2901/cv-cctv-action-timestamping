@@ -19,7 +19,7 @@ Since the captions were not present initially, an attempt was made to caption th
 
 ## Methodology
 
-[image][./Images/CV-Arch.png]
+![image][/Images/CV-Arch.png]
 
 ### I. Feature Extraction and Image Enhancement
 
